@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MySocialApp</title>
+    <style>
+        /* Basic styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5;
+        }
+        header {
+            background-color: #3b5998;
+            color: white;
+            padding: 15px 20px;
+            text-align: center;
+        }
+        nav {
+            display: flex;
+            justify-content: space-around;
+            background-color: #4267b2;
+            padding: 10px;
+            color: white;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 5px 10px;
+        }
+        nav a:hover {
+            background-color: #365899;
+            border-radius: 5px;
+        }
+        .container {
+            margin: 20px auto;
+            max-width: 800px;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .button {
+            background-color: #3b5998;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #365899;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <h1>Welcome MySocialApp Launced by Emmanuel</h1>
+    </header>
+    
+
+    <!-- Navigation Menu -->
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#messages">Messages</a>
+        <a href="#chats">Chats</a>
+        <a href="#friends">Friends</a>
+        <a href="#settings">Settings</a>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="container" id="account-section">
+        <h2>Create an Account</h2>
+        <form id="registerForm">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="button" class="button" onclick="registerAccount()">Create Account</button>
+        </form>
+    </div>
+
+    <!-- Home Section -->
+    <div class="container" id="home-section" style="display:none;">
+        <h2>Home</h2>
+        <p>Welcome to your feed!</p>
+    </div>
+
+    <!-- Messages Section -->
+    <div class="container" id="messages-section" style="display:none;">
+        <h2>Messages</h2>
+        <p>View your messages here.</p>
+    </div>
+
+    <!-- Chats Section -->
+    <div class="container" id="chats-section" style="display:none;">
+        <h2>Chats</h2>
+        <p>Chat with your friends!</p>
+    </div>
+
+    <!-- Friends Section -->
+    <div class="container" id="friends-section" style="display:none;">
+        <h2>Friends</h2>
+        <p>Manage your friends list here.</p>
+    </div>
+
+    <!-- Settings Section -->
+    <div class="container" id="settings-section" style="display:none;">
+        <h2>Settings</h2>
+        <p>Adjust your account settings.</p>
+        <footer>@2024 MySocialApp All rights reserved</footer>
+    </div>
+    <script>
+        function registerAccount() {
+            const username = document.getElementById('username').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            if (username && email && password) {
+                alert('Account created successfully! Welcome, ' + username);
+                document.getElementById('account-section').style.display = 'none';
+                document.getElementById('home-section').style.display = 'block';
+            } else {
+                alert('Please fill in all fields.');
+            }
+        }
+
+        // Add navigation functionality
+        const navLinks = document.querySelectorAll('nav a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', (event) => {
+                event.preventDefault();
+                const targetId = link.getAttribute('href').substring(1) + '-section';
+                
+                document.querySelectorAll('.container').forEach(section => {
+                    section.style.display = 'none';
+                });
+
+                const targetSection = document.getElementById(targetId);
+                if (targetSection) {
+                    targetSection.style.display = 'block';
+                }
+            });
+        });
+    </script>
+</body>
+</html><ALOASK-SEPARATE-EDITORS><ALOASK-SEPARATE-EDITORS>
